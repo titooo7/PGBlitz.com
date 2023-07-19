@@ -376,28 +376,24 @@ pgui() {
 
 pythonstart() {
 
-  ansible="2.8.2"
-  pip="19.1.1"
+  pip="23.2"
 
   apt-get install -y --reinstall \
-    nano \
-    git \
-    build-essential \
-    libssl-dev \
-    libffi-dev \
-    python3-dev \
-    python3-pip \
-    python-dev \
-    python-pip
+      nano \
+      git \
+      build-essential \
+      libssl-dev \
+      libffi-dev \
+      python3-dev \
+      python3-pip 
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python3 get-pip.py
   python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==${pip}
   python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
   python3 -m pip install --disable-pip-version-check --upgrade --force-reinstall \
-    pyOpenSSL \
-    requests \
-    netaddr
-  python -m pip install --disable-pip-version-check --upgrade --force-reinstall pip==${pip}
-  python -m pip install --disable-pip-version-check --upgrade --force-reinstall setuptools
-  python -m pip install --disable-pip-version-check --upgrade --force-reinstall ansible==${1-$ansible}
+      pyOpenSSL \
+      requests \
+      netaddr
 
   ## Copy pip to /usr/bin
   cp /usr/local/bin/pip /usr/bin/pip
